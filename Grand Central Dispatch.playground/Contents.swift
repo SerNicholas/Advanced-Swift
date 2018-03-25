@@ -10,8 +10,8 @@ let background = DispatchQueue.global() // defaultni pozdainski
 // Paralelni redovi (concurrent queue) obavljaju jedan ili vise zadataka istovremeno u zavisnosti od kompleksnosti zadataka
 
 
-// Sinhrono izvrsenje zadataka ceka da on bude gotov pre nego sto oslobodi kontrolu
-// Asinhrono izvrsenje zadatka ne ceka da on bude goto vec odmah oslobadja kontrolu
+// Sinhrono izvrsenje zadataka ceka da on bude gotov pre nego sto oslobodi kontrolu, DAKLE CEKA NA IZVRSENJE SVOG BLOKA
+// Asinhrono izvrsenje zadatka ne ceka da on bude gotov vec odmah oslobadja kontrolu, SVOJ BLOK PRESKACE I ODMAH CITA SLEDECI RED KOD POSLE SVOG BLOKA
 
 // Sync vs Async
 func doSync() {
