@@ -1,16 +1,5 @@
 import UIKit
 
-// Da li se i kada nudi ugovor na neodredjeno
-// Da li plata ide na belo
-// Postoji li mogucnost da plata ide preko agencije
-// Da li se prekovremeno radi
-// Da li se radi vikendom
-// Kako se obracunava prkovremeni rad
-// Na kojim se masinama radi
-// Postoji li senior koji vodi projekat
-// Kako se obracunava godisnji odmor, s obzirom da bih prelazio u trenutku kada se blizi leto, a nece proci zakonski period kad moze da se koristi godisnji
-// Da li postoji privatno zdravstveno osiguranje
-
 // # 1 #
 // Retain cycle je stanje kada dva objekta imau reference jedan prema drugome, koje zadrzavaju, tako da zadrzavaju jedan drugog i nije moguce izvrsiti deinicijalizaciju objekata.
 
