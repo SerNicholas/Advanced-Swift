@@ -163,6 +163,8 @@ import UIKit
 
 // # 18 #
 // Grand Central Dispatch - thread pool pattern - nacin kako se lakse radi sa multitaskingom
+// GCD je biblioteka koja obezbedjuje jednostavan API pomocu kojeg se taskovi obavljaju paraleleno (concurrently),
+// dok se niti (threads) hendluju u pozadini
 // telefon operise sa ove dve niti, a vecinu stvari obavlja main thread
     let main = DispatchQueue.main // defaultni glavni
     let background = DispatchQueue.global() // defaultni pozdainski
@@ -275,3 +277,160 @@ class NekaKlasa {
     }
     checkIDCard { true }
 
+
+// # 22 #
+// Setup Live Rendering
+// pomocu @IBDesignable omogucava se Interface Builderu da moze obaviti live updatevna odredjenom view-u
+
+// # 23 #
+// Sta je B-tree
+// To je drvo pretrage sa uredjenim key-value skladistem.
+
+// # 24 #
+// Od cega se sastoji NSError objekat
+// Od DOMAIN, ERROR CODE i USER INFO DICTIONARY
+
+// # 25 #
+// Sta je Enum
+// Enum je tip, nacrt, koji sadrzi grupu povezanih vrednosti u istom okviru
+
+// # 26 #
+// Sta je Bounding Box
+// To je termin iz geometrij i odnosi se na najmanju meru u okviru koje je dat skup tacaka
+
+// # 27 #
+// Zasto ne koristimo Strong za Enum
+// S' obzirom da Enum nije objekat onda se na njega ne moze primeniti strong ili weak
+
+// # 28 #
+// Sta je @synthesize u ObjC
+// @synthesize pravi automastski getter i setter metodu nekom property-ju
+
+// # 29 #
+// Sta je @dynamic u ObjC
+// Obicno se koristi za podklase NSMAnagedObject-a
+// Govori kompajleru da su getter i setter implementirani na drugom mestu
+
+// # 30 #
+// Zasto koristimo @synthesize
+// On obezbedjuje da samo jedan THREAD izvrsava kod u njegovom bloku u bilo kom trenutku
+
+// # 31 #
+// Koja je razlika izmedju STRONG, WEAK, READ-ONLY i COPY
+// To su atributi property-ja i govore kako ce biti hendlovana memorija tog property-ja
+// Strong - reference count ce se povecati, a ta referenca ce postojati tokom zivota objekta
+// Weak - pokazuje na objekat, ali ne povecava reference count
+// Read-Only - postoji samo getter
+// Copy - kopira se vrednost kreiranog objekta i njegova vrednost je nepromenljiva
+
+// # 32 #
+// Sta je completion handler
+// To je closure koji treba da vrati neke podatke ili obavi neki zadatak po zavrsetku nekog API poziva
+
+
+// # 33 #
+// Koja je razlika izmedju frame i bounds
+// Bounds - je pravougaonik nekog view koji je definisan sa kordinatom (x,y) i dimenzijom (sirina, visina) u odnosu na svoj sopstveni koordinatni sistem (0,0)
+// Frame - je pravougaonik nekog view koji je definisan sa kordinatom (x,y) i dimenzijom (sirina, visina) u odnosu koordintani sistem svog superview-a
+
+// # 34 #
+// Sta je Responder Chain
+// To je hijerarhija objekata koji odgovaraju na primljene evente
+
+// # 35 #
+// Sta je Regular Expression
+// To je String pattern koji opisuje kako da se pretrazuje kroz string
+
+// # 36 #
+// Sta je Operator Overloading
+// On nam omogucava da promenimo kako nacin kako se postojeci opertori ponasaju
+
+// # 37 #
+// Sta je TVMLKit
+// To je biblioteka koja povezuje TVML, JavaScript i natvinu tvOS aplikaciju
+
+// # 38 #
+// Sta je funkcija
+// To je blok koda koji treba da obavi neku funkcionalnost
+
+// # 39 #
+// Sta je ABI
+// ABI je vazan za aplikacije koje koriste spoljne biblioteke, ako npr update-ovane biblioteke koriste isti ABI, aplikacija ne mora da se menja
+
+// # 40 #
+// Zasto su design patterni vazni
+// Zato sto su dokazana resenja za programerske probleme. Postoje Creational (npr. Singleton...), Structural (npr. Decorater, Adapter, Facade...), Behavioral (Observer, Memento...)
+
+// # 41 #
+// Sta je Facade Design Pattern
+// On obezbedjuje jedinstveni interfejs kompleksnom subsistemu. Umesto da korisnik brine o APIjima raznih klasa, dobija jedan jedinstven i pojednostvljen API.
+
+// # 42 #
+// Sta je Decorater Design Pattern
+// Pomocu njega dinamicki dodajemo ponasanje objektu, bez modifikovanja koda.
+// To su category i Delegation kod ObjC i Extension i Delegation kod Swifta.
+
+// # 43 #
+// Sta je Adapter Design Pattern
+// On omogucuje klasama sa nekompatibilnim interfejsima da rade zajedno. To je wrapper za objekat, tako da pomocu adaptera objekat moze raditi sa standardnim interfejsom
+
+// # 44 #
+// Sta je Observer Design Pattern
+// To je pattern kod koga jedan objekat obavestava drugi o nekim promenama i ovaj automatski na to reaguje.
+// To su NSNotifiaction i KVO
+
+// # 45 #
+// Sta je Memento Design Pattern
+// On cuva podatke na nekom spoljnem mestu, a kasnije po potrebi oni mogu biti aktivirani bez narusavanja ENKASPULACIJE, npr private data ostaje private data
+
+// # 46 #
+// Ogranicenja JSON/pliste
+// Svaki put kad nesto treba procitati ili upisati mora da se obavi serijalizacija ili deserijalizacija; Sporost; Nije thread-safe
+
+// # 47 #
+// Prednosti Swifta u odnosu na Objective C
+// Brzi; Opcionali umanjuju mogucnost pucanja aplikacije, Postojanje Closure-a, Ugradjeni Error Handling, Type safe languge, Podrzava pattern uklapanje
+
+// # 48 #
+// Sta su generici u Swiftu
+// Oni prave takav kod, kojem nije definisan tip prijemnih podataka niti tip podataka koji se vraca
+
+// # 49 #
+// Tipovi varijabli
+// Refernce i Value tipovi. Referentni tipovi pokazuju na originalni podatak u memoriji, a Value tipovi prave kopiju originalnog podataka
+
+// # 50 #
+// Sta je Concurrency
+// To je podela izvrsnih puteva programa, kako bi oni mogli da se izvrsavaju istovremeno
+
+// # 51 #
+// Sta je Race Condition
+// Dva ili vise Thread-ova pristupaju istom objektu istovremeno i hoce da ga izmene
+
+// # 52 #
+// Sta je Dead Lock
+// Kada dva ili vise taskova cekau jedni na druge da bi se zavrsili, a do toga nikad ne dolazi
+
+// # 53 #
+// Sta je Readers-Writers Problem
+// Vise threadova cita istovremeno, dok samo jedan upisuje podatke
+
+// # 54 #
+// Sta je Readers-Writers Lock
+// On dozvoljava concurrent read only pritup zajednickom resursu, dok operacijama "upisivanja" treba posebna dozvola za pristup
+
+// # 55 #
+// Sta je Dispatch Barrier Block
+// On pravi serijsko usko grlo kad se radi sa concurrent queues
+
+// # 56 #
+// Sta je NSOperation
+// To je siri sprektar mogucnosti multithreadinga u odnosu na GCD
+
+// # 57 #
+// Sta je KVC
+// Key-Value-Coding - property-jima objekta se moze pristupiti koriscenjem stringa u toku runtime-a, za razliku od standardnog pristupa u development time-u kada se pristupa preko statickog naziva property-ja
+
+// # 58 #
+// Sta je KVO
+// Key-Value-Observing - omogucava nekom kontroleru ili klasi da prati promene nekog property-ja i da na njih reaguje  
