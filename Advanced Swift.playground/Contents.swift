@@ -3,8 +3,10 @@ import UIKit
 // # 1 # // Objasni retain cycle
 // Retain cycle je stanje kada dva objekta imau reference jedan prema drugome, koje zadrzavaju, tako da zadrzavaju jedan drugog i nije moguce izvrsiti deinicijalizaciju objekata.
 
+
 // # 2 # // Sta je keyword defer
 // DEFER omogucuje da se kod koji se nalazi u njegovom bloku, izvrsi poslednji u okviru bloka u kom se poziva DFFER
+
 
 // # 3 # // Sta je computed property
 // Computed property koristi stored property da bi dobio svoju vrednost i eventualno izmenio vrednost stored propertija
@@ -18,15 +20,18 @@ import UIKit
         }
     }
 
+
 // # 4 # // Sta su type property-ji
 // Type propertiji su oni koji se pozivaju preko klase ili strukture, ne mora da se pravi instanca objekta, a i ne mogu da se zovu preko instance objekta. Definisu se sluzbenim recima STATIC i CLASS. STATIC se ne moze overrideovati, a CLASS se ne moze primanjivati kod struktura
 
+
 // # 5 # // Sta je singleton
-// Singleton pattern je objekat koji je samo jednom instanciran u aplikaciji
+// Singleton pattern je objekat koji je samo jednom instanciran u aplikaciji (jedinstveno instanciran u aplikaciji)
     class Singleton {
         static let shared = Singleton()
         private init() {}
     }
+
 
 // # 6 # // Sta je Casting
 // Upcasting se dogadja kada se ide sa nizeg na visi nivo i koristi se sluzbena rec (as), npr
@@ -35,6 +40,7 @@ import UIKit
     let anyArray: [Any] = ["name", 1]
     let explicitDowncasting = anyArray[0] as! String
     let implicitDowncasting = anyArray[1] as? Int
+
 
 // # 7 # // Subscripts
 // Koriscenje subscripta moze biti precica prilikom koriscenja nekog collectiona iz objekta
@@ -54,16 +60,20 @@ import UIKit
     let visinaBezSubscripta = covek.info["Visina"] // 183
     let stopalo = covek["Stopalo"] // 0
 
+
 // # 8 # // Sta je Array
 // Array je genericka struktura. String je genericka struktura
     var niz: Array<Double> = Array()
+
 
 // # 9 # // Sta je ternary operator
 // Ternary operator, operator koji ima tri dela
     var dvojka = (0 == 0) ? 2 : 10000 // 2
 
+
 // # 10 # // Kad koristimo setove
 // Setove koristimo za pronalazenje nekih jedinstvenih vrednosti.
+
 
 // # 11 # // Ekstenzije
 // U ekstenzijama se ne mogu definisati propertiji na klasican nacin, sve drugo moze
@@ -81,6 +91,7 @@ import UIKit
         }
     }
     NekaStruktura().opis // Petar Petrovic - iOS Developer
+
 
 // # 12 # // Kad koristimo error handling
 // Error handling se koristi umesto masivnog else/if koda
@@ -111,6 +122,7 @@ import UIKit
         print("Unesi broj licne karte")
     }
 
+
 // # 13 # // Objasniti accesss control
 // OPEN - najotvoreniji vid access kontrole. Mogu da pravim subklase u mom modulu iako su nadklase u drugom modulu.
 // PUBLIC - isto sto i OPEN samo sa nesto ogranicenijim pristupom. Moze se override-ovati samo u subclassama koje su unutar modula u kom je i nadklasa
@@ -118,6 +130,7 @@ import UIKit
 // FILEPRIVATE - metode i property-ji su dostupni unutar samo jednog swift file-a.
 // PRIVATE - najveca kontrola pristupa. Metode i property-ji se mogu koristiti samo unutar naznacene klase.
 // PUBLIC PRIVATE(SET) - property je javno dostupan, tj getter mu je javno dostupan, a setter mu je private
+
 
 // # 14 # // Sta je convenience init
 // Convenience init - init koji ima potpis onako kako nam odgovara, ali se mora pozvati originalni init unutar convenience bloka koda
@@ -138,6 +151,7 @@ import UIKit
             self.init(metara: uMetre)
         }
     }
+
 
 // # 16 # // Property Observer
     var ocena: Int = 10 {
@@ -160,6 +174,7 @@ import UIKit
         }
     }
 
+
 // # 18 # // Grand Central Dispatch
 // Grand Central Dispatch - thread pool pattern - nacin kako se lakse radi sa multitaskingom
 // GCD je biblioteka koja obezbedjuje jednostavan API pomocu kojeg se taskovi obavljaju paraleleno (concurrently),
@@ -174,7 +189,6 @@ let concurrentCustomQueue = DispatchQueue(label: "paralelni_red", qos: .utility,
 
 // Sinhrono izvrsenje zadataka ceka da on bude gotov pre nego sto oslobodi kontrolu, DAKLE CEKA NA IZVRSENJE SVOG BLOKA
 // Asinhrono izvrsenje zadatka ne ceka da on bude gotov vec odmah oslobadja kontrolu
-
 //: Performing background tasks and then updating the UI
         DispatchQueue.global(qos: .background).async {
             //background work
@@ -183,7 +197,7 @@ let concurrentCustomQueue = DispatchQueue(label: "paralelni_red", qos: .utility,
             }
         }
 // Oprez
-        //: Beware of deadlocks with serial queue
+        //: Beware of deadlocks with serial queue - DVA BLOKA SE SINHRONO IZVRSAVAJU JEDAN U DRUGOM NA SERIJSKOM REDU
         let customSerialQueue = DispatchQueue(label: "com.yogevsitton.MyApp.myCustomSerialQueue")
         customSerialQueue.sync {
             // Synchronous code
@@ -200,8 +214,10 @@ let concurrentCustomQueue = DispatchQueue(label: "paralelni_red", qos: .utility,
             //    }
         }
 
+
 // # 19 # // sta je lazy var
-// lazy var je non-escaping po defaultu i kod njega nema retain cycle
+// lazy var je non-escaping po defaultu i kod njega nema retain cycle, a instancira se kada se prvi put poziva
+
 
 // # 20 # // Sta je CAPTURE LIST
 // CAPTURE LIST se korsiti da bi se sprecio retain cycle u klozerima
@@ -277,168 +293,322 @@ class NekaKlasa {
 
 
 // # 22 # // Setup Live Rendering
-// pomocu @IBDesignable omogucava se Interface Builderu da moze obaviti live updatevna odredjenom view-u
+// pomocu @IBDesignable omogucava se Interface Builderu da moze obaviti live update na odredjenom view-u
+
 
 // # 23 # // Sta je B-tree
 // To je drvo pretrage sa uredjenim key-value skladistem.
 
+
 // # 24 # // Od cega se sastoji NSError objekat
 // Od DOMAIN, ERROR CODE i USER INFO DICTIONARY
 
+
 // # 25 # // Sta je Enum
-// Enum je tip, nacrt, koji sadrzi grupu povezanih vrednosti u istom okviru
+// Enum je tip, nacrt, koji sadrzi grupu povezanih vrednosti u istom okviru i incae je value type
+
 
 // # 26 # // Sta je Bounding Box
-// To je termin iz geometrij i odnosi se na najmanju meru u okviru koje je dat skup tacaka
+// To je termin iz geometriji i odnosi se na najmanju meru u okviru koje je dat skup tacaka
+
 
 // # 27 # // Zasto ne koristimo Strong za Enum
 // S' obzirom da Enum nije objekat onda se na njega ne moze primeniti strong ili weak
 
+
 // # 28 # // Sta je @synthesize u ObjC
-// @synthesize pravi automastski getter i setter metodu nekom property-ju
+// @synthesize pravi automastski getter i setter nekom property-ju, (povezuje iVar i @property)
+
 
 // # 29 # // Sta je @dynamic u ObjC
-// Obicno se koristi za podklase NSMAnagedObject-a
-// Govori kompajleru da su getter i setter implementirani na drugom mestu
+// Ovim se govori kompajleru da ce vrednosti odredjenog property-ja biti dodate tokom runtime-a,
+// koristi ga npr NSMAnagedObject, jer njegove property-je kreira CoreData tokom runtime-a
 
-// # 30 # // Zasto koristimo @synthesize
-// On obezbedjuje da samo jedan THREAD izvrsava kod u njegovom bloku u bilo kom trenutku
 
-// # 31 # // Koja je razlika izmedju STRONG, WEAK, READ-ONLY i COPY
+// # 30 # // Ponasanje STRUCT i CLASS
+//struct Struktura {
+//    var property = "A"
+//}
+//var a1Struktura = Struktura()
+//var a2Struktura = a1Struktura
+//a2Struktura.property = "B"
+//print("\(a1Struktura.property)  \(a2Struktura.property)")  //  A  B
+//
+//class Klasa {
+//    var property = "A"
+//}
+//var a1Klasa = Struktura()
+//var a2Klasa = a1Klasa
+//a2Klasa.property = "B"
+//print("\(a1Klasa.property)  \(a2Klasa.property)")  //  B  B
+
+// # 31 # // Koja je razlika izmedju atributa STRONG, WEAK, READ-ONLY, COPY, RETAIN & ASSIGN
 // To su atributi property-ja i govore kako ce biti hendlovana memorija tog property-ja
-// Strong - reference count ce se povecati, a ta referenca ce postojati tokom zivota objekta
-// Weak - pokazuje na objekat, ali ne povecava reference count
-// Read-Only - postoji samo getter
-// Copy - kopira se vrednost kreiranog objekta i njegova vrednost je nepromenljiva
+// STRONG - reference count ce se povecati, a ta referenca ce postojati tokom zivota objekta i ovaj je dosao sa ARC-om
+// WEAK - pokazuje na objekat, ali ne povecava reference count
+// READ-ONLY - postoji samo getter
+// COPY - kopira se vrednost kreiranog objekta i njegova vrednost je nepromenljiva, iskljucuje RETAIN
+// RETAIN - isto sto i STRONG, pointer na objekat, seter povecava retain brojac i zauzima memoriju autorelease pool-a
+// ASSIGN - Pravi seter koji dodeljuje vrednost instanci direktno, bez kopiranja ili retain-ovanja, to je npr. CGFLoat
+
 
 // # 32 # // Sta je completion handler
 // To je closure koji treba da vrati neke podatke ili obavi neki zadatak po zavrsetku nekog API poziva
-
 
 // # 33 # // Koja je razlika izmedju frame i bounds
 // Bounds - je pravougaonik nekog view koji je definisan sa kordinatom (x,y) i dimenzijom (sirina, visina) u odnosu na svoj sopstveni koordinatni sistem (0,0)
 // Frame - je pravougaonik nekog view koji je definisan sa kordinatom (x,y) i dimenzijom (sirina, visina) u odnosu koordintani sistem svog superview-a
 
+
 // # 34 # // Sta je Responder Chain
 // To je hijerarhija objekata koji odgovaraju na primljene evente
+
 
 // # 35 # // Sta je Regular Expression
 // To je String pattern koji opisuje kako da se pretrazuje kroz string
 
+
 // # 36 # // Sta je Operator Overloading
 // On nam omogucava da promenimo kako nacin kako se postojeci opertori ponasaju
+
 
 // # 37 # // Sta je TVMLKit
 // To je biblioteka koja povezuje TVML, JavaScript i natvinu tvOS aplikaciju
 
+
 // # 38 # // Sta je funkcija
 // To je blok koda koji treba da obavi neku funkcionalnost
 
+
 // # 39 # // Sta je ABI
-// ABI je vazan za aplikacije koje koriste spoljne biblioteke, ako npr update-ovane biblioteke koriste isti ABI, aplikacija ne mora da se menja
+// ABI - Application Binary Interface, pomocu ABI-ja Swift (Swift binaries) obavlja interakciju sa
+// drugim bibliotekama. ABI definise mnogo low level detalja koji se ticu binarnih entiteta kao sto
+// su pozivanje funkcija, predstavljanje podataka u memoriji, gde se nalazi metadata i kako mu
+// pristupiti, itd. Stabilnost ABI-ja znaci da ce buduce verzije kompajlera moci da naprave binarne
+// entitete koji ce biti usaglaseni sa stabilnim ABI-jem, ukratko omogucava kompatibilnost
+// aplikacija i biblioteka kompajliranih razlicitim verzijama Swifta. Danas je Swift Dynamic Library stabilna.
+
 
 // # 40 # // Zasto su design patterni vazni
 // Zato sto su dokazana resenja za programerske probleme. Postoje Creational (npr. Singleton...), Structural (npr. Decorater, Adapter, Facade...), Behavioral (Observer, Memento...)
 
+
 // # 41 # // Sta je Facade Design Pattern
 // On obezbedjuje jedinstveni interfejs kompleksnom subsistemu. Umesto da korisnik brine o APIjima raznih klasa, dobija jedan jedinstven i pojednostvljen API.
+
 
 // # 42 # // Sta je Decorater Design Pattern
 // Pomocu njega dinamicki dodajemo ponasanje objektu, bez modifikovanja koda.
 // To su category i Delegation kod ObjC i Extension i Delegation kod Swifta.
 
+
 // # 43 # // Sta je Adapter Design Pattern
 // On omogucuje klasama sa nekompatibilnim interfejsima da rade zajedno. To je wrapper za objekat, tako da pomocu adaptera objekat moze raditi sa standardnim interfejsom
+
 
 // # 44 # // Sta je Observer Design Pattern
 // To je pattern kod koga jedan objekat obavestava drugi o nekim promenama i ovaj automatski na to reaguje.
 // To su NSNotifiaction i KVO
 
+
 // # 45 # // Sta je Memento Design Pattern
 // On cuva podatke na nekom spoljnem mestu, a kasnije po potrebi oni mogu biti aktivirani bez narusavanja ENKASPULACIJE, npr private data ostaje private data
+
 
 // # 46 # // Ogranicenja JSON/pliste
 // Svaki put kad nesto treba procitati ili upisati mora da se obavi serijalizacija ili deserijalizacija; Sporost; Nije thread-safe
 
+
 // # 47 # // Prednosti Swifta u odnosu na Objective C
 // Brzi; Opcionali umanjuju mogucnost pucanja aplikacije, Postojanje Closure-a, Ugradjeni Error Handling, Type safe languge, Podrzava pattern uklapanje
+
 
 // # 48 # // Sta su generici u Swiftu
 // Oni prave takav kod, kojem nije definisan tip prijemnih podataka niti tip podataka koji se vraca
 
+
 // # 49 # // Tipovi varijabli
 // Refernce i Value tipovi. Referentni tipovi pokazuju na originalni podatak u memoriji, a Value tipovi prave kopiju originalnog podataka
+
 
 // # 50 # // Sta je Concurrency
 // To je podela izvrsnih puteva programa, kako bi oni mogli da se izvrsavaju istovremeno
 
+
 // # 51 # // Sta je Race Condition
 // Dva ili vise Thread-ova pristupaju istom objektu istovremeno i hoce da ga izmene
+// To je Reader-Writers problem
+
+// let concurrentQueue = DispatchQueue(label: "concurrent", attributes: .concurrent)
+
+// Race Condition:
+//    concurrentQueue.async {
+//        for i in 0...1000 {
+//            usleep(3)                      OVO VE KOD MODIFIKOVANJA PROIZVESTI Index out of range
+//            self.earthArray.append("🌎: \(i)")  APPEND SE DOGADJA NPR NA Thread2
+//        }
+//    }
+//
+//    concurrentQueue.async {
+//        for i in 0...1000 {
+//            self.earthArray[i] = "⚽: \(i)"  MODIFIKOVANJE SE DOGADJA NPR NA Thread5
+//        }
+//    }
+
+// Resenje 1 za Race Condition:
+//    concurrentQueue.sync {  // UPOTREBA SYNCA KOD CITANJA PODATAKA
+//        for i in 0...1000 {
+//            usleep(3)
+//            self.earthArray.append("🌎: \(i)")
+//        }
+//    }
+//
+//    concurrentQueue.async {
+//        for i in 0...1000 {
+//            self.earthArray[i] = "⚽: \(i)"
+//        }
+//    }
+
+// Resenje 2 za Race Condition:
+//    concurrentQueue.async {
+//        for i in 0...1000 {
+//            usleep(3)
+//            self.earthArray.append("🌎: \(i)")
+//        }
+//    }
+//
+//    concurrentQueue.async(flags: .barrier) { // UPOTREBA BARRIER KOD UPISIVANJA PODATAKA,tako concurrent queue postaje prakticno serial queue
+//        for i in 0...1000 {
+//            self.earthArray[i] = "⚽: \(i)"
+//        }
+//    }
+
+// Resenje 3 za Race Condition:
+//    serialQueue.async { // PROMENA CONCURRENT U SERIAL QUEUE, LAZY NACIN
+//        for i in 0...1000 {
+//            usleep(3)
+//            self.earthArray.append("🌎: \(i)")
+//        }
+//    }
+//
+//    serialQueue.async(flags: .barrier) {  // PROMENA CONCURRENT U SERIAL QUEUE, LAZY NACIN
+//        for i in 0...1000 {
+//            self.earthArray[i] = "⚽: \(i)"
+//        }
+//    }
+
 
 // # 52 # // Sta je Dead Lock
 // Kada dva ili vise taskova cekau jedni na druge da bi se zavrsili, a do toga nikad ne dolazi
 
+
 // # 53 # // Sta je Readers-Writers Problem
 // Vise threadova cita istovremeno, dok samo jedan upisuje podatke
+
 
 // # 54 # // Sta je Readers-Writers Lock
 // On dozvoljava concurrent read only pritup zajednickom resursu, dok operacijama "upisivanja" treba posebna dozvola za pristup
 
+
 // # 55 # // Sta je Dispatch Barrier Block
 // On pravi serijsko usko grlo kad se radi sa concurrent queues
+
 
 // # 56 # // Sta je NSOperation
 // To je siri sprektar mogucnosti multithreadinga u odnosu na GCD
 
+
 // # 57 # // Sta je KVC
-// Key-Value-Coding - property-jima objekta se moze pristupiti koriscenjem stringa u toku runtime-a, za razliku od standardnog pristupa u development time-u kada se pristupa preko statickog naziva property-ja
+// Key-Value-Coding - property-jima objekta se moze pristupiti koriscenjem stringa u toku runtime-a, za razliku od standardnog pristupa u development time-u kada se pristupa preko statickog naziva property-ja, , NPR. #SELECTOR("loadView")
+
 
 // # 58 # // Sta je KVO
 // Key-Value-Observing - omogucava nekom kontroleru ili klasi da prati promene nekog property-ja i da na njih reaguje
 
+
 // # 59 # // Sta je swizzling metod
-// Pomocu swizzlinga implamentacija metode tokom runtime moze biti razlicita, promenom mapiranja preko #selecto(naziv_metode)
-// Da bi ga koristila klasa kojoj se mapiraju metode, ona mora naslediti NSObject, a metode koje se swizzluju moraju imati atribut dynamic
+// Pomocu swizzlinga moze da se menja implamentacija metode tokom runtime-a,
+// Da bi ga koristila klasa kojoj se mapiraju metode, ona mora naslediti NSObject
+// npr
+
+//extension UIColor {
+//    @objc func opisBoje() -> String {
+//        return "Necu da opisem boju"
+//    }
+//
+//    private static let swizzleDesriptionImplementation: Void = {
+//        let boja = UIColor.red
+//        let aClass: AnyClass! = object_getClass(boja)
+//        let originalnaMetoda = class_getInstanceMethod(aClass, #selector(description))
+//        let swizzleMetoda = class_getInstanceMethod(aClass, #selector(opisBoje))
+//        if let originalnaMetoda = originalnaMetoda, let swizzleMetoda = swizzleMetoda {
+//            // ovde swizzlujem
+//            method_exchangeImplementations(originalnaMetoda, swizzleMetoda)
+//        }
+//    }()
+//
+//    public static func swizzleDesription() {
+//        _ = self.swizzleDesriptionImplementation
+//    }
+//}
+
+// print(UIColor.red) // UIExtendedSRGBColorSpace 1 0 0 1
+// UIColor.swizzleDesription() // pozivam swizzle
+// print(UIColor.red) // "Necu da opisem boju"
+// UIColor.swizzleDesription() // pozivam swizzle opet
+// print(UIColor.red) // "Necu da opisem boju"  -- nece da vrati na original, i to je mana
+
 
 // # 60 # // Sta je ARC
 // ARC je mogucnost koja tokom kompajliranja obavlja automatski menadzment memorije. Automatic Reference Counting.
 // Ona ce osloboditi memoriju zauzetu objektom kada ne bude vise bilo referenci na taj objekat.
 
+
 // # 61 # // Objasniti #keyPath()
 // To je staticka provera izvresna pomocu key-path-a. To je litral stringa koji se koristi kao StaticString ili StringLiteralConvertible,
 // a proverom se utvrdjuje da li objekat zaista postoji i da li je pravilno predstavljen jeziku, objectiveC-u.
 
+
 // # 62 # // iOS 11 opcije i mogucnosti za developera
 // Novi MapKit markeri, Headeri koji se mogu konfigurisati, azuriranja UITableView-a zasnovana na blokovima, KVO zasnovan na klozerima, podrska za vector UIImage
+
 
 // # 63 # // Zasto je ReactNative vazan za iOS
 // Pomocu ReactNative je logika aplikacije pisana u JavaScriptu, a UI aplikacije je pisan potpuno nativno, tako da ne moraju da postoje kompromisi
 // koji bi se desili sa HTML5 UI-jem. Drugo je to sto je UI aplikacije razvijen pomocu Functional Programming-a
 
+
 // # 64 # // Sta je NSFetchRequest
 // To je klasa odgovorna za dobavljanje podataka iz CoreData-e. Fetch request-ovi su fleksibilni, a moze se dobaviti skup objekata koji ispunjavaju trazene kriterujume pretrage, mogu se dobaviti pojedinacne vrednosti itd.
+
 
 // # 65 # // Objasniti NSPersistneceContainer
 // On kreira i vraca kontejner koji ima skladiste u kojem treba sacuvati aplikaciju. Ovaj property je opcional jer postoje error-i koji bi mogli da dovedu do
 // pucanja tog skladista
 
+
 // # 66 # // Objasniti NSFetchedResultsController
 // To je kontroler koji nije view controller jer nema UI. On sinhroniazuje UITableView sa bazom koja je u CoreData-i.
+
 
 // # 67 # // Tri glavna poboljsanja debugging-a u XCode 8
 // View Debugger - mogu da se vide oblici view-eva tokom runtime-a
 // Thread Sanitizer - upozorava na moguce probleme sa thread-ovima, najcesce na Race Condition
 
-// # 68 # // Koja su tri glavna pravila Test Driven Developmenta
+
+// # 68 # // Koja su tri glavna pravila Test Driven Developmenta - TDD
 // Ne sme se pisati produkcioni kod, osim kada failing unit treba da prodje test
 // Ne sme se pisati vise nego sto je potrebno test koda, da bi se dovelo do pada testa
 // Ne sme se pisati vise nego sto je potrebno produkcionog koda, da bi se prosao test
 
+
 // # 69 # // Sta znaci termin Yan Shaving
 // Programerski termin koji se odnosi na niz operacija koje treba uraditi da bi projekat dosao u sledecu fazu
 
+
 // # 70 # // Razlika izmdju BDD i TDD
 // BDD testove mogu citati i ne-inzenjeri
+
 
 // # 71 # // Objasni AAA (Arrange-Act-Assert)
 // AAA je patern za organizovanje i formatiranje koda u Unit Testovima. Ako pisemo XCtest-ove, svaki nas test bi grupisao ove tri celine odvojene blanko linijama
@@ -446,27 +616,35 @@ class NekaKlasa {
 // Act - operacije nad objektom ili metodom koji se testiraju
 // Assert - ispisati ocekivane rezultate
 
+
 // # 72 # // Objasniti Swift Standard Library Protocol
 // Stdlib ima nekoliko protokola: Equatable, Comparable, Sequence, Codable
+
 
 // # 73 # // Razlika izmedju SVN i Git
 // Git se zasniva na distributivnom sistem upravljanja verzijama. Ima lokalni repozitorijum, a mreza mu treba samo za sinhronizaciju
 // SVN se zasniva na centralizovanom sistemu upravljanja verzijama, a mreza mu je stalno neophodna zbog pristupa.
 
+
 // # 74 # // Glavna svrha frameworka
 // Enkapsuliranje, modularnost i ponovno koriscenje koda
+
 
 // # 75 # // Sta je Swift Package Manager
 // Pomocu SPM moze se deploy-ovati na platforme koje nemaju XCode, kao sto je to Linux. SPM moze resavati probleme dependency-ja koji nastaju koriscenjem raznih nezavisnih biblioteka. SPM podrzava iskljucivo koriscenje master branch-a, a jezici koje podrzava su Swift, Objective C, C, C++
 
+
 // # 76 # // Razlika izmedju delegata i nsnotifikacija
 // Pomocu njih se postizu gotovo iste funkcionalnosti, ali su delgati za prenos 1-1, a nsnotifikacija za prenos 1-n.
+
 
 // # 77 # // Koja su ogranicanja SitiKit
 // Ne moze korisiti sve tipove aplikacije, nije zamena za celokupnu pravu aplikaciju, zahteva stalni internet, mora da komunicira sa apple serverima
 
+
 // # 78 # // Razlika izmedju INOUT paramtera i REGULAR paramtera
 // Inout se prenosi preko reference a regular preko vrednosti.
+
 
 // # 79 # // Objasni View Controller life cycle
 // loadView - kreira view kojim ce kontroler upravljati, a poziva se samo kada se kontroler kreira iz koda
@@ -478,20 +656,25 @@ class NekaKlasa {
 // viewWillDisappear - poziva se neposredno pre nego sto se kontrolerov view ukloni sa ekrana zbog prikazivanja sledeceg kontrolera
 // viewDidDisappear - poziva se kada je kontroler sklonjen sa ekrana, a obicno se koristi kada treba zaustaviti taskove koji su za njega bili vezani
 
+
 // # 80 # // Razlika izmedju LLVM i CLANG
 // CLANG je CLanguage i to je frontend LLVM-a, a svaki kompajler ima 3 dela
 // Frontend - leksicka analiza, parsiranje
 // Optimizer - Optimiziranje apstraktnog sintaksnog drveta
 // Backend - Genersianje masinskog koda
 
+
 // # 81 # // Sta je klasa
 // Klasa treba da definise objekat i njegovo ponasanje. To je nacrt objekta.
+
 
 // # 82 # // Sta je interface
 // @interface objective C-a nije isto sto i interfejs u Javi, on samo definise public interface klase, public API
 
+
 // # 83 # // Stanja iOS aplikacje
 // Non-working, Inactive(radi ali je neaktivana npr zbog sms-a ili poziva), Active, Background, Suspended
+
 
 // # 84 # // Najvaznije delegirajuce metode aplikacije
 // WillFinishLaunchingWithOptions - poziva se kada je pokretanje aplikacije pocelo, ovde se prvi kodovi aplikacije izvrsavaju
@@ -502,81 +685,104 @@ class NekaKlasa {
 // ApplicationWillEnterForeground
 // ApplicationWillTerminate
 
+
 // # 85 # // Razlika izmedju property-ja i instance variable
 // Instance variable-a je samo slot skladista, kao slot u strukturi. Inace, drugi objekti im ne mogu pristupiti direktno.
 // Property ce vratiti ili setovati instance variable-u, a moze koristiti podatke od njih nekoliko ili od jedne.
 
+
 // # 86 # // Kako mozemo dodati UIKit Swift Package Managere-u
 // Swift Package Manager ne podrzava UIKit. Moze se napraviti File Manager ili Framework za drugi projekat.
+
 
 // # 87 # // Razlika izmedju SDK i Framework-a
 // SDK je skup alata za razvoj software-a. Ovaj skup se koristi za kreiranje apliakcije.
 // Framework je platforma koja se koristi za kreiranje aplikacije.
 
+
 // # 88 # // Objasniti subscript
 // To su precice za pristup nizovima, recnicima, sekvencama.
+
 
 // # 89 # // Sta je DispatchGroup
 // DispatchGroup omogucava  agregatnu sinhronizaciju posla. Korisitmo ih da grupisemo razlicite delove koda i na razlicitim threadovima,
 // da bi pratili kada se svi ti delovi koda zavrsavaju.
 // Ako nam je potrebno da sacekamo na nekoliko asinhronih i sinhronih operacija da bi nastavili dalje, koristimo DispatchGroup.
 
+
 // # 90 # // Sta je RGR (Red-Green-Refactor)
 // To su faze TDD-a. Red - koristi najvise 7 linija test koda i ovde test ne prozlazi
 // Green - najvise do 7 linija produkcionog koda i ovde test prolazi
 // Refactor - posto testovi prolaze, refaktoristi slobodno mozemo
 
+
 // # 91 # // Gde se koristi Dependency Injection
 // Kada se koristi storyboard ili xib, pravimo IBOutlet-e, a oni su property-ji view-a. Oni se ubacuju u viewController kada se on instancira i ovo je oblik dependency injection-a
 // Postoje razlicite forme DI: Constructor Injection, Property Injection i Method Injection.
 
+
 // # 92 # // Vrste notifikacija
 // Remote i local
+
 
 // # 93 # // Koje vrste ORDER funkcija mozemo koristiti na kolekcijama
 // Map, Filter, Reduce, Sort
 
+
 // # 94 # // Sta omogucuje kombinovanje komita
 // git squash
+
 
 // # 95 # // Razlika izmedju Any i AnyObject
 // Any predstavlja instancu bilo kog tipa ukljucujuci i funckije i opcionale
 // AnyObject predstavlja instancu bilo koje klasa.
 
+
 // # 96 # // Koja je git komanda za pronalazenje losih komita
 // git bisect
+
 
 // # 97 # // Sta je CoreData
 // To je menadzer koji podatke cuva na disku. CoreData nije threadSafe, tako da se sve obavlja na main thread-u ili na back thread-u ali sa prosledjivanjem ID-ja managed objekta.
 // Ovde multithreading gubi smisao, i zbog toga je najbolje da managed object konvertujemo u Plain Old Swift Object (POSO)
 
+
 // # 98 # // Objasniti AssociatedType
 // Korisiti se kada od protokola pravimo genericki protokol
 
+
 // # 99 # // Koja komanda cuva kod bez komitovnaja
 // git stash
+
 
 // # 100 # // Objasniti Priority Inversion i Priority Inheritance
 // Ako thread visokog prioriteta ceka na thread niskog prioriteta, to je Priority Inversion.
 // Ako thread niskog prioriteta, privremeno nasledi prioritet thrread-a visokog prioriteta, to je Priority Inheritance
 
+
 // # 101 # // Sta je Hashable
 // Protokol koji omogucava da koristimo objekte kao key-eve recnika.
+
 
 // # 102 # // Kad se koristi Optional Chaining a kad if let ili guard
 // Optional Chaining koristim kada mi nije vazno da li ce operacija proci, u suprotnom koristim IF LET ili GUARD
 
+
 // # 103 # // Nacicni za prenosenje podataka u Swiftu
 // Dlegate, KVO, Segue, NSNotification, Target-Action, Callbacks
+
 
 // # 104 # // Kako postizes clean code u projektu
 // Pratim uputstva, vodice i konvencije na GitHub-u i SwiftLint-u
 
+
 // # 105 # // Razlika izmedju Optional.None i nil
 // Nema razlike jer je nil samo skracenica Optional.None
 
+
 // # 106 # // Sta je GrphQL
 // Pomocu njega kreiramo upitni interfejs za klijente na aplikacijskom nivou
+
 
 // # 107 # // Sta je Continious Integration
 // Continious Integration nam omogucuje da imamo rani feedback, ukoliko nesto ne krene kako treba tokom developmenta
@@ -584,128 +790,165 @@ class NekaKlasa {
 // Self hosted serveri: XCode server, Jenkins, TeamCity
 // Cloud solutions: TravisCL, Bitrise, Buddybuild
 
+
 // # 108 # // Razlika izmedju delegata i callback-a
 // Razlika je u tome sto se delegatima govori da je doslo do promene, a callback-ovi posmatraju promene
+
 
 // # 109 # // Objasni Linked Liste
 // Linked List-e se uglavnom sastoje od struktura koje se zovu nodovi. Ovi nodovi imaju dve stvari.
 // Prva je ono sto zelimo da cuvamo, a druga je adresa informacije drugog noda.
 // Mana je velika prostor koji zauzimaju.
 
+
 // # 110 # // Backend
 // Najbolje za iOS je raditi node.js + express.js sa MongoDB ili Swift Server Side sa Vaporom ili Kiturom
+
 
 // # 111 # // Objasni AutoLayout
 // On obezbedjuje fleksibilan layout sistem koji opisuje kako ce se view-evi i UI kontrole ponasati, tj dobiti dimenzije i lokacije u hijerarhiji
 
+
 // # 112 # // Sta je pointer
 // Pointer je direktna referenca memorijske adresa
+
 
 // # 113 # // Objaniti blokove
 // Blokovi su nacin definisanja jednog taska ili jedinice ponasanja, bez neophodnosti pisanja cele klase.
 // To su anonimne funkcije.
 
+
 // # 114 # // Sta je keychain
 // To je APi za bezbedno cuvanje podataka u aplikaciji, Locksmith je jedna dobra Keychain biblioteka
+
 
 // # 115 # // Razlika izmedju atomic i nonatomic
 // Atomic je thread-safe, to znaci da samo jedan thread moze pristupiti ovakvom property-ju, i trebalo bi da je default-ni atribut iako se retko koristi.
 // Nonatomic nije thread-safe, ali se zato mnogo cesce (95%) koristi i neuporedivo je brzi
 
+
 // # 116 # // Sta je enkapsulacija
 // To je objektno orijentisan dizajn princip koji skriva unutrasnje stanje i funkcionalnost objekta. To znaci da objekat cuva svoje informacije privatnim.
+
 
 // # 117 # // Tri okidaca lokalnih notifikacija
 // Lokacija, Kalendar, Vremenski interval
 
+
 // # 118 # // Objaniti selektore
 // To si interne predstave naziva metode
+
 
 // # 119 # // Razlika izmedju ARC i autorelease
 // Autorelease je ARC koji se i dalje koristi. ARC se korsiti unutar okvira, a autorelease izvan okvira funkcije
 
+
 // # 120 # // Razlika izmedju CoreFoundation i Foundation
 // CoreFoundation je c-ovska alternativa Foundation
+
 
 // # 121 # // Objasniti Place Holder Constraint
 // On govori Interface Builder-u da izbrise contraint-e kada bilduje i pokrece kod.
 // Omogucava layout engine-u da shvati osnovni layout, a zbog toga layout mozemo modifikovati u runTime-u.
 
+
 // # 122 # // Charles Proxy
 // Ukoliko je potreban proxy server koji objedinjuje kompletne request-ove i response-ove, kao i HTTP headere,
 // koristi se Charles Proxy, a on podrzava binarne protokole, rewritting i trafic throttling
 
+
 // # 123 # // Unwind segue
 // On se pokrece unazad kroz jedan ili vise segue-ja da bi vratio korisnika na situaciju (ekran) koji kontrolise postojeci viewController
+
 
 // # 124 # // Odnos iVar i @property
 // iVar je instance variable, ne moze joj se pristupiti osim ako ne kreiramo accessor
 // taj accessor se generise pomocu @property-ja. iVar i @property mogu biti razlicitih naziva
 // iVar-u se moze pristupiti uvek preko KVC-a
 
+
 // # 125 # // Komanda xcscontrol
 // Pomocu ove komande uticemo na aktivnosti XCode servera (start, stop, restart, reset...)
 // npr.  $sudo xcrun xcscontrol --reset
 
+
 // # 126 # // Sta je NSManagedObjectContext
 // Njegov primarni zadatak je da organizuje (to manage) skup managed object-ata
+
 
 // # 127 # // Sta je Instruments
 // to je alat pomocu kog se analiziraju performanse, memorijski footprint, animacije, koriscenje energije, leak-ovi, file/network aktivnsot
 
+
 // # 128 # // Sta je Deep Linking
 // To je nacin prenosenja podataka u aplikaciju sa bilo koje platforme, npr sa web sajta
+
 
 // # 129 # // Kad se koristi SUPER
 // Super se kosristi kada se pristupa inicijalizatoru nadklase
 
+
 // # 130 # // Sta je CocoaTouch
 // To je apstraktni layer u iOS-u, biblioteka koja se koristi za bildovanje executable aplikacija
+
 
 // # 131 # // Sequence
 // To je protokol pomocu kojeg se definise agregacija elemenata koji se distribuiraju sekvencijalno u nekom redu.
 // Svi kolekcioni tipovi, array, dictionary, set nasledjuju Sequence
 
+
 // # 132 # // Koristi XCode servera
 // Automatski proverava projekat, bilduje aplikaciju, izvodi testove i arhivira aplikaciju za distribuiranje
 
+
 // # 133 # // Sta je Strategy Pattern
 // On omogucava promenu ponasanja algoritma u runTime-u
+
 
 // # 134 # // Sta je BundleID a sta AppID
 // BundleID je jedinstveni naziv jedne aplikacije
 // AppID je jedinstveni naziv tima developera i za AppId je potreba AppleDeveloper account
 
+
 // # 135 # // Factory Method Pattern
 // Ovaj pattern cini codebase fleksibilnijim za dodavanje ili uklanjanjenovih tipova.
 // Da bismo dodali novi tip treba samo napraviti novu klasu za taj tip.
 
+
 // # 136 # // Sta su layer objekti
 // To su objekti podataka koji reprezentuju vizuelni sadrzaj, a koriste ih view-i da bi renderovali taj sadrzaj
+
 
 // # 137 # // Sta je Iterator Protocol
 // On je u tesnoj vezi sa Sequence protokolom. Sequence protokol obezbedjuje pristup svojim elementima kreiranjem iteratora.
 // Taj iterator se podvrgava Iterator protokolu.
 
+
 // # 138 # // Sta je OAuth
 // Open Authorization - je protokol autorizacije koji ne uzima u obzir identifikaciju korisnika, vec identifikuje druge aplikacije koje pristupaju podacima korisnika bez odavanja korinikovih kredencijala
+
 
 // # 139 # // Sta je Circular Dependency
 // Odnos izmedju dva ili vise modula koji direktno ili indirektno zavise jedan od drugog da bi pravilno funkcionisali
 
+
 // # 140 # // Sta je UIBezierPath
 // Ova klasa omogucava iscrtavanje putanja s ciljem dobijenja bilo kakvog oblika na ekranu
 
+
 // # 141 # // Sta je LLDB
 // To je debugger LLVM-a
+
 
 // # 142 # // Sta je @synchronized(self)
 // Korsiti se kada se neki podatak azurira ili mu se postavlja neka nova vrednost, jer bi u suprotnom
 // u istom trenutku jedan therad upisiviao podatke, a drugi therad citao podatke, jer bi pristupali istoj memomrijskoj
 // lokaciji odredjenog property-ja, tako da se ne bi dobio validan podatak
 
+
 // # 143 # // Sta je to API aplikacije
 // Application Programming Interface - to je deo servera koji prima request-ove i salje response-ove
+
 
 // # 144 # // Razlika izmedju 3 Layer arihtekture i 3 Tier Arhitekture
 // Layeri se nalaze na jednoj masini, a tier-i se mogu nalaziti na vise masina.
@@ -716,6 +959,7 @@ class NekaKlasa {
 // a output ovih fajlova - dll fajl mora biti na istom serveru ili na istoj masini
 // 3 Tier arhitektura: ova tri layera su tri razlicita projekta i svaki moze biti deploy-ovan na razlicitom serveru ili na razlicitim masinama
 // 3LA ce poboljsati readability i reusability, a 3TA ce poboljsati scalability aplikacije
+
 
 // # 145 # // Razlika izmedju Array-a i List-e
 // Niz je skup elemenata iste vrste podataka. Lista je sveden skup elemenata koji su povezani pointerima.
@@ -755,6 +999,7 @@ class NekaKlasa {
                       [96][4]        ****>[74][*]**>**
  */
 
+
 // # 146 # // Razlika izmedju Objekto-Orijentisanih i Obejktno-Zasnovanih jezika
 // OZJ ne podrzavaju sve mogucnosti OOJ, OZJ ne podrzavaju nasledjivanje.
 // Visual Basic je OZJ, zato sto se moze napraviti klasa i objekat, ali se ne moze obaviti nasledjivanje, dok bi se
@@ -776,11 +1021,13 @@ class NekaKlasa {
 // Salsa, SR, Limbo, AFNIX
 // 9 - OBJECT ORIENTED PROGRAMMING LANGUAGES: Cecil (slican Objective C-u), Moto, Oxygene, Scala
 
+
 // # 147 # // Razlika izmedju Overloading-a i Overriding-a
 // Method Overloading - metode u istoj klasi imaju isti naziv, ali svaka metoda ima razlicit broj parametara ili paramteri imaju drugacije tipove i raspored
 // Overriding - dogadja su u subklasi na metodi koja ima isti potpis kao metoda u nadklasi, ali izvrsenje moze biti isto ili razlicito u odnosu na nadklasu
 // Overloading ima smisao u dodavanju funkcionalnosti ili prosirivanju postojece metode, a overriding u mogucoj promeni polazne metode
 // Overloading se sluzi Compile Time Polimorfizmom, a overriding Run Time Polimorfizmom.
+
 
 // # 148 # // Razlika izmedju label i literal
 // Po default-u label ima tekst, a literal nema.
@@ -789,6 +1036,7 @@ class NekaKlasa {
 // Vise memorije zauzima label nego literal, label nema mode property dok literal ima.
 // Label se ne moze koristiti izmedju tagove dok literal moze, label ispsiuje staticeki tekst dok literal ispisuje dinamicki tekst
 // OBJECT>CONTROL>WEBcontrol>LABEL  vs. OBEJCT>CONTROL>LITERAL
+
 
 // # 149 # // Razlika izmedju apstraktne klase i interfejsa
 // AK se koristi kao bazicna klasa i ne moze se instancirati, a interfejs je template koji ima samo spisak metoda i property-ja
@@ -799,6 +1047,7 @@ class NekaKlasa {
 // AK moze imati konstruktor dok interface ne moze
 // AK moze imati access kontrolu, a interface nema
 // AK obezbedjuje brzi pristup od interface-a
+
 
 // # 150 # // Razlika izmedju REST i SOAP
 // REST je Represntational State Transfer, SOAP je Simple Object Access Protocol
@@ -813,6 +1062,7 @@ class NekaKlasa {
 // REST nema WSDL za servisni opsi kao SOAP (Web Services Description Language)
 // REST ne zahteva dodatne framework-e kao SOAP.
 
+
 // # 151 # // Razlika izmedju GET i POST
 // Get metoda sadrzi podatke koji su vidljivi u URL-u u adres baru, za razliku od POST metode
 // Catching i bookmark mogu da se izvedu kod GET, za razliku od POST
@@ -826,6 +1076,7 @@ class NekaKlasa {
 // GET: "https://www.mesto.com/metoda.asp?frame=abc&lname=xyz"
 // POST: "https://www.mesto.com/metoda.asp"
 
+
 // # 152 # // Razlika izmedju JSON i XML
 // JSON - JavaScript Object Notation, XML je eksttendovan od SGML - Standrad Generalized Markup Language
 // JSON je samo human readable, XML je human & machine readable
@@ -837,10 +1088,12 @@ class NekaKlasa {
 // JSON je bolji za WEB servise, a XML za WEB konfiguracije
 // JSON ne dozvoljava pristup nekom delu delu/elementu svoje strukture direktno, dok XML pomocu XPath to podrzava
 
+
 // # 153 # // Razlika izmedju BRAKE i CONTINUE
 // Brakeom se prekida izvrsenje petlje, a Continue-om se preskace iteracija u petlji
 // Brake-om se napusta petlja, a Continue-om ne
 // Brake se koristi i kod petlji i kod switch-eva, COntinue samo kod petlji
+
 
 // # 154 # // Razlika izmedju kontruktora i dekontruktora
 // Oba su specijalne metode svake klase
@@ -850,6 +1103,7 @@ class NekaKlasa {
 // Overloading konstruktora je moguc, za razliku od dekonstruktora
 // Dekonstruktor ima tiled (~)
 
+
 // # 155 # // Razlika izmedju server side scriptinga i client side scriptinga
 // SSS -> web serve, CSS -> web browser
 // SSS povezuje bazu koja je na web serveru sa programom, CSS to ne moze
@@ -857,6 +1111,7 @@ class NekaKlasa {
 // Response SSS je sporiji od CSS-a
 // SSS: PHP, JSP, ASP, ASP.NET, RUBY
 // CSS: JavaScript, VB Script
+
 
 // # 156 # // Razlika izmedju run time polimorfizma i compile time polimorfizma
 // Kod CTP poziv je resolovan kompajlerom, a kod RTP nije
@@ -866,9 +1121,10 @@ class NekaKlasa {
 // CTP ima brze izvrsenje jer je ranije poznat, tokom kompajliranja, za razliku od RTP cije se izvresnje obalja u runTime-u
 // CTP je manje fleksibilan od RTP jer se izvrsava u toku kompajliranja
 
+
 // # 157 # // Razlika izmedju alloc i malloc
 // ALLOC inicijalizuje alociranu memoriju na null ili na nula
-// MALLOC inicijalizuje alocirani memorijski prostor sa nekom GARBAGE (bezveznom) vrednoscu
+// MALLOC alocira memorijski prostor sa nekom GARBAGE (bezveznom) vrednoscu
 // ALLOC alocira blok memorije, MALLOC alocira bajt memorije
 // ALLOC uzima broj promenljivih za koje odvaja memoriju i velicinu (kolicinu) bajtova pojedinacne promenljive
 // MALLOC uzima samom jedan argument, a to je velicina memorije
@@ -878,6 +1134,7 @@ class NekaKlasa {
 // MALLOC ima pointer na prvi bajt alociranog prostora
 // Bolje je koristito ALLOC nego MALLOC jer je MALLOC-ov memorijski sadrzaj nepredvidiv
 
+
 // # 158 # // Razlika izmedju vizuelnog i nevizuelnog programiranja
 // VP zahteva IDE (Integrated Development Environment), za razliku od NVP
 // VP koriscenjem IDE-a obezbedjuje brzo programiranje iako se ne zna potpuna jezicka sintaksa
@@ -886,6 +1143,7 @@ class NekaKlasa {
 // NVP nema ove mogucnoti
 // VP moze napraviti program koristeci graficke elemente, npr koriscenjem GUI-ja
 // NVP mora da se program napravi tekstualno, jer nema GUI nego Text Based Interface
+
 
 // # 159 # // Razlika izmedju strukturalnog i objektno orijentisanog programiranja
 // SP se prvenstveno zasniva na procesima i logickim strukturama, a tek onda na podacima potrebnim za te procese
@@ -901,8 +1159,152 @@ class NekaKlasa {
 // OP ima veliku mogucnost za ponovnim iskoriscenjem koda i manju funkcionalnu zavisnost
 // SP ima manju apstrakciju i fleksibilnost za razliku od OP
 
+// # 160 # // Sta je CoreData
+// CoreData se koristi za cuvanje podataka iz aplikacije u SQLite, koji se nalazi u folderu DOCUMENTS same aplikacije.
+// CoreData nije relaciona baza, vec samo wrapper oko SQLite-a, taqko da CoreData pojednostavljuje
+// upotrebu SQLite-a, ali zato ne sadrzi sve mogucnosti koje ima SQLite.
+
+//             ----------------------
+//            |                      |
+//            |         APP          |
+//            |                      |
+//             ----------------------
+//                       ▲
+//                       |
+//                       |
+//                       ▼
+//             ----------------------
+//            |                      |
+//            |Managed Object Context|
+//            |                      |
+//             ----------------------
+//                       ▲
+//                       |
+//                       |
+//                       ▼
+//             ----------------------
+//            |     Persistant       |
+//            |        Store         |
+//            |     Coordinator      |
+//             ----------------------
+//                       ▲
+//                       |
+//                       |
+//                       ▼
+//             ----------------------
+//            |     Persistant       |
+//            |        Object        |
+//            |        Store         |
+//             ----------------------
+//                       ▲
+//                       |
+//                       |
+//                       ▼
+//             ----------------------
+//            |                      |
+//            |         DB           |
+//            |                      |
+//             ----------------------
 
 
+// # 161 # // Sta je Managed Object
+// Managed Object - to su objekti koji se kreiraju u aplikaciji radi cuvanja podataka. Moze se
+// smatrati kao red ili zapis u relacionoj db. Za svaki novi podatak koji se dodaje, mora se
+// napraviti novi MO da bi se dodao u bazu. MO su u stvari instance klase NSManagedObject.
+// MO se nalaze i sa njima se radi u Managed Object Contextu.
 
 
+// # 162 # // Sta je Persistance Store Cooredinator
+// On je odgovoran za pristup Persistance Object Store-ovima. On hendla te pristupe. Skoro nikad
+// ne stupa u direktnu interakciju sa Pers.Store.Coordinatorom, a veoma retko je potrebno da
+// postoji vise od jendog. Kada je potrebno vise store-ova, PSC ih predaje gornjim slojevima
+// CoreDataStack-a kao jedinstveni store.
 
+
+// # 163 # // Sta je Managed Object Context
+// To je layer posrednik izmedju PSC i aplikacije. Aplikacija radi sa Managed Objectima koji se
+// nalaze u ovom kontekstu, tj ovom layer-u CoreDataStack-a. Managed Object Context radi sa
+// statusima objekata u odnosu na data store i radi sa vezama izmedju objekata koje oni imaju
+// medjusobom. Sve interakcije se privremeno cuvaju u MOC, dok mu se ne kaze da ih sacuva u nizim
+// slojevima.
+
+
+// # 164 # // Sta je Persistance Data
+// To je ono sto se konacno ili realno cuva na disku.
+
+
+// # 165 # // Ko sacinjava CoreData Stack
+// Managed Object, Managed Object Context, Persistance Store Cooredinator, Persistance Storage
+
+
+// # 166 # // U kakvom obliku se mogu cuvati podaci u CoreData-i
+// CoreData ima 3 osnovna tipa za Persistance Storage: Binarni, XML i SQLite
+
+
+// # 167 # // Kakve relacije postoje kod CoreData-e
+// Postoje relacije: 1-1, 1-n i n-1
+
+
+// # 168 # // Sta je apstraktni entitet
+// Apstraktni entitet je onaj koji se nece instnacirati
+
+
+// # 169 # // Sta je entity inheritance
+// Nasledjivanje karaktristika entiteta je zgodno koristiti kada postoje entiteti slicni medjusobom
+
+
+// # 170 # // CoreData delete rules ili pravila brisanja
+// Pravila brisanja kod CoreData-e su: Deny, Nullify, Cascade i No Action.
+// Deny ne dozvoljava brisanje objekta ako postoji makar jedna veza na njega
+// Nullify uklanja sve veze odabranom objektu ali njega ne brise
+// Cascade brise i povezane objekte kada se izbrise izvorni objekat
+
+
+// # 171 # // Kako treba praviti relacije u CoreData-i
+// Preporuceni pristup je napraviti veze u oba smera, a zatim po logici stvari opredeliti inverzne veze
+
+
+// # 172 # // Koji su concurrent tipovi u CoreData-i i kako se koriste
+// To su mainQueueConcurrencyType i privateQueueConcurrencyType. Treba izbegavati obradu podataka na
+// main queue-u koji nisu od znacaja korisniku, kao i obrade koje dugo traju.
+
+
+// # 173 # // Koji su najmanje potrebni uslovi da postojala CoreData
+// To su MO, MOC i PSC
+
+
+// # 174 # // Sta je lazy loading kod CoreData
+// To je preporucen nacin instanciranja Persistance Containera CoreData-e
+
+
+// # 175 # // Kako se obavlja sinhronizovanje konteksta CoreData-e
+// Sinhronizovanje konteksta se moze obaviti pomocu UserNotification, MOC DidChange, MOC WillSave
+// MOC DidSave
+
+
+// # 176 # // Da li su dozvoljene veze izmedju entiteta razlicitih Persistance Storeage-a
+// Nisu dozvoljene
+
+
+// # 177 # // Da li se ManagedObject-i mogu prenositi iz jednog ManagedObjectContext-a u drugi
+// To se ne radi, ali ako je potrebno preneti MO sa jednog queue-a na drugi, u okviru istog
+// konteksta, onda se to radi preko NSMAnagedObjectID-ja
+
+
+// # 178 # // Da li mogu da se citaju samo odredjeni property-ji entiteta
+// Citanje samo nekih property-ja iz entiteta se ostvaruje pomocu - propertiesToFetch
+
+
+// # 179 # // Sta je FeatchResultController
+// FeatchResultController je kontroler kojim se hendla rezultat CoreData fetch request-a i
+// prikazuje se user-u, ali on nije viewController
+
+
+// # 180 # // Sta je NSFetchRequest
+// To je klasa odgovorna za dobavljanje podataka iz CoreData-e
+
+
+// # 181 # // Sta je NSPersistanceContainer
+// To je kontejner koji aplikaciji omogucava da koristi CoreData Stack, jer ga on i kreira za nju.
+// On je odgovoran za ucitavanje data modela, kreiranje ManagedObject modela koji koristi opet za
+// kreiranje Persistance Storage Coordinatora
